@@ -1,0 +1,146 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Source/Actors/ARCADE_N.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://Source/Levels/Credits.gd" type="Script" id=2]
+[ext_resource path="res://Source/Actors/Alien1Anim.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://alien3.png" type="Texture" id=4]
+[ext_resource path="res://alien4-1.png" type="Texture" id=5]
+[ext_resource path="res://alien4.png" type="Texture" id=6]
+[ext_resource path="res://alien2.png" type="Texture" id=7]
+[ext_resource path="res://alien3-1.png" type="Texture" id=8]
+[ext_resource path="res://alien2-1.png" type="Texture" id=9]
+[ext_resource path="res://Source/443865__vabsounds__laserattack.wav" type="AudioStream" id=10]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.00392157, 0.00392157, 0.00392157, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 47
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 22
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="GameOverScreen" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 590.0
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
+
+[node name="Rows" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 964.0
+margin_bottom = 540.0
+custom_constants/separation = 80
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/Rows"]
+margin_right = 924.0
+margin_bottom = 201.0
+custom_fonts/font = SubResource( 2 )
+text = "Made by
+ Jordan Klenk
+
+Thanks for playing"
+align = 1
+autowrap = true
+uppercase = true
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/Rows"]
+margin_top = 281.0
+margin_right = 924.0
+margin_bottom = 310.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Rows/CenterContainer"]
+margin_left = 357.0
+margin_right = 567.0
+margin_bottom = 29.0
+custom_constants/separation = 40
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+margin_right = 210.0
+margin_bottom = 29.0
+custom_colors/font_color_hover = Color( 0.380392, 0.823529, 0.180392, 0.705882 )
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 7 )
+text = "Main Menu"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 832, 304 )
+scale = Vector2( 3, 3 )
+frames = ExtResource( 3 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 176, 376 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
+position = Vector2( 480, 504 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="."]
+position = Vector2( 144, 120 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 6 )
+frame = 1
+playing = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -32.845
+autoplay = true
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
