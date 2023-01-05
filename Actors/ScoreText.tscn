@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Source/Levels/RichTextLabel.gd" type="Script" id=1]
+
+[node name="ScoreText" type="RichTextLabel"]
+margin_left = 356.0
+margin_top = 532.0
+margin_right = 396.0
+margin_bottom = 572.0
+script = ExtResource( 1 )

@@ -1,0 +1,5 @@
+[gd_scene format=2]
+
+[node name="Interface" type="Control"]
+margin_right = 1024.0
+margin_bottom = 576.0

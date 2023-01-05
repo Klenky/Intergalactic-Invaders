@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Source/Levels/Label.gd" type="Script" id=1]
+[ext_resource path="res://Source/Actors/ARCADE_N.TTF" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=42]
+font_data = ExtResource( 2 )
+
+[node name="ScoreLabel" type="Label"]
+margin_right = 1020.0
+margin_bottom = 576.0
+custom_fonts/font = SubResource( 42 )
+text = "Score: 0   
+"
+align = 2
+valign = 2
+uppercase = true
+script = ExtResource( 1 )
